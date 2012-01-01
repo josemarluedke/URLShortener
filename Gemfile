@@ -8,7 +8,7 @@ gem 'rails', '3.1.3'
 
 # MongoDB
 gem 'mongoid'
-#gem 'bson_ext'
+gem 'bson_ext'
 
 
 # Gems used only for assets and not required
@@ -35,6 +35,7 @@ gem 'jquery-rails'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.6"
+  gem "mongoid-rspec"
 end
 
 group :test do
