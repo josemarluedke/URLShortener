@@ -5,7 +5,7 @@ class Url
     field :token, :type => String
     field :ip_address, :type => String
     
-    validates :permalink, :token, :presence => true
+    validates :permalink, :token, :presence => true, :uniqueness => true
     validate :permalink do
         if permalink !~ %r{^(http|https|git|svn)://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$}
             errors.add :permalink, 'Invalid url'

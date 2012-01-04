@@ -6,19 +6,26 @@ describe Url do
         @url = Factory :url
     end
     
-    describe "requires" do
-        it "a permalink" do
-            @url.permalink = nil
+    describe "token" do
+        it "requere" do
+            @url.token = nil
             @url.should_not be_valid
         end
         
-        it "a token" do
-            @url.token = nil
-            @url.should_not be_valid
+        it "should deny duplicate" do
+            @url.token = 'test'
+            @url.save
+            url = Url.new :permalink => 'http://josemarluedke.com', :token => 'test'
+            url.should_not be_valid
         end
     end
     
     describe "permalink" do
+        it "requere" do
+            @url.permalink = nil
+            @url.should_not be_valid
+        end
+        
         it "should not be valid" do 
             @url.permalink = 'www.com'
             @url.should_not be_valid
@@ -44,6 +51,12 @@ describe Url do
             @url.should be_valid
         end
         
+        it "should deny duplicate" do
+            @url.permalink = 'http://josemarluedke.com'
+            @url.save
+            url = Url.new :permalink => 'http://josemarluedke.com', :token => 'test'
+            url.should_not be_valid
+        end
     end
     
     
