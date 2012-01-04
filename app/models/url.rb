@@ -4,6 +4,7 @@ class Url
     field :permalink, :type => String
     field :token, :type => String
     field :ip_address, :type => String
+    embeds_many :visits
     
     validates :permalink, :token, :presence => true, :uniqueness => true
     validate :permalink do

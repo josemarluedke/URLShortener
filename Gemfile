@@ -34,7 +34,7 @@ gem 'jquery-rails'
 
 group :test, :development do
   gem "rspec-rails"
-  #gem "mongoid-rspec"
+  gem "mongoid-rspec"
 end
 
 group :test do

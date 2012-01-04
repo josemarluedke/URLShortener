@@ -6,6 +6,14 @@ describe Url do
         @url = Factory :url
     end
     
+    it "should be valid" do
+        @url.should be_valid
+    end
+    
+    it "should embed many visits" do
+        should embed_many :visits
+    end
+    
     describe "token" do
         it "requere" do
             @url.token = nil
@@ -58,7 +66,5 @@ describe Url do
             url.should_not be_valid
         end
     end
-    
-    
     
 end
