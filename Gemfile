@@ -10,7 +10,6 @@ gem 'rails', '3.1.3'
 gem 'mongoid'
 gem 'bson_ext'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -34,7 +33,7 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test, :development do
-  gem "rspec-rails", "~> 2.6"
+  gem "rspec-rails"
   gem "mongoid-rspec"
 end
 
