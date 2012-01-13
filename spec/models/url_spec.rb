@@ -14,22 +14,24 @@ describe Url do
         should embed_many :visits
     end
     
-    describe "token" do
-        it "requere" do
-            @url.token = nil
-            @url.should_not be_valid
-        end
-        
+    describe "token" do        
         it "should deny duplicate" do
             @url.token = 'test'
-            @url.save
+            @url.save            
             url = Url.new :permalink => 'http://josemarluedke.com', :token => 'test'
             url.should_not be_valid
+        end
+        
+        it "shoult be not empty" do
+            @url.token = nil
+            @url.save
+            url = Url.find @url.id
+            url.token.should_not be_empty
         end
     end
     
     describe "permalink" do
-        it "requere" do
+        it "require" do
             @url.permalink = nil
             @url.should_not be_valid
         end

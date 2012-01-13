@@ -9,7 +9,7 @@ describe Visit do
         should be_embedded_in :url
     end
 
-    it "should requere url_id" do
+    it "should require url_id" do
         visit = Visit.new :referral_link => 'http://josemarluedke.com', :ip_address => '127.0.0.1'
         visit.should_not be_valid
     end
