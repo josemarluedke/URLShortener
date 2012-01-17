@@ -4,6 +4,7 @@ class Url
     field :permalink, :type => String
     field :token, :type => String
     field :ip_address, :type => String
+    field :custom, :type => Boolean, :default => false
     embeds_many :visits
     validates :permalink, :token, :presence => true, :uniqueness => true
     
@@ -15,17 +16,17 @@ class Url
     
     before_validation do
         if self.token.nil? or self.token.empty?
-           self.token = random_token
+           self.token = generate_token Url.count(conditions: {:custom => false})
+        else
+          self.custom = true
         end
     end
     
-    def random_token
-        characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
-        srand
-        token = ''
-        4.times do
-            pos = rand(characters.length)
-            token += characters[pos..pos]
+private
+    def generate_token num
+        token = ShortUrlTokenGenerator::generate num
+        if Url.count(conditions: {:token => token}) > 0
+            token = generate_token num + 1
         end
         token
     end

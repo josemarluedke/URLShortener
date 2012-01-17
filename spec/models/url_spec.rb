@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Url do
-    
     before do
         @url = Factory :url
     end
@@ -22,11 +21,12 @@ describe Url do
             url.should_not be_valid
         end
         
-        it "shoult be not empty" do
+        it "should be generate automatic token" do
             @url.token = nil
             @url.save
             url = Url.find @url.id
             url.token.should_not be_empty
+            puts url.token
         end
     end
     
@@ -68,5 +68,4 @@ describe Url do
             url.should_not be_valid
         end
     end
-    
 end
