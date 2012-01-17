@@ -4,10 +4,6 @@ gem 'rails', '3.1.3'
 
 gem 'short_url_token_generator'
 
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
-
-
 # MongoDB
 gem 'mongoid'
 gem 'bson_ext'
