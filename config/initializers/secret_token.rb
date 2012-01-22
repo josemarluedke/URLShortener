@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-URLShortener::Application.config.secret_token = 'b838aa64ce06d1ad4f9554523d6f60ff1c9f141b33ba54f879dafeeb57a05f0f0afdd2c012255c32e4ba96f5125261890b4069b5e33a35a140c25bdab72bdc50'
+URLShortener::Application.config.secret_token = '0dc79cd8b782bc73e9a63c6404d5249094e779c89b35c9513011161bca8f50be13c84cabb192d7fccd5558c8ece90977f920718ecb11894467e9905a0f10397c'
