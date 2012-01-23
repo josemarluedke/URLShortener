@@ -1,4 +1,10 @@
 URLShortener::Application.routes.draw do
+
+  get "urls/index"
+  get "urls/new"
+  post "urls/create"
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
