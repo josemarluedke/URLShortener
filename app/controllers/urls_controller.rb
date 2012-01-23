@@ -11,5 +11,9 @@ class UrlsController < ApplicationController
   end
 
   def create
+    respond_to do |format|
+      format.html
+      format.json {render :json => {:success => true}}
+    end
   end
 end
