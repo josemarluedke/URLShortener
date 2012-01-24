@@ -25,26 +25,16 @@ describe UrlsController do
     end
   end
 
-  describe "GET 'create'" do
-    it "should returns http success" do
-      get :create
+  describe "POST 'create'" do
+    it "should return http success" do
+      post :create, {:url => {:link => "http://josemarluedke.com"}}
       response.should be_success
-      response.should render_template "create"
     end
 
     it "should returns success on json format" do
-      get :create, :format => :json
+      post :create, {:url => {:link => "http://josemarluedke.com"}}, :format => :json
       response.should be_success
-    end
-  end
-
-  require File.expand_path('spec/spec_helper')
-
-  describe "POST 'create'" do
-    it "should return http success" do
-      post :create
-      response.should be_success
-      response.should render_template "create"
+      response.body.should eq(assigns(:url).to_json)
     end
   end
 

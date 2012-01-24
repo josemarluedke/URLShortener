@@ -1,8 +1,6 @@
 URLShortener::Application.routes.draw do
 
-  get "urls/index"
-  get "urls/new"
-  post "urls/create"
+  resources :urls, :only => [:index, :new, :create]
 
 
   # The priority is based upon order of creation:
