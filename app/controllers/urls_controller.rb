@@ -12,7 +12,12 @@ class UrlsController < ApplicationController
 
   def create
     @url = Url.new params[:url]
-
+    
+    if !@url.valid? and @url.errors[:link].any?
+      url = Url.first :conditions => {:link => params[:url][:link]}
+      @url = url if url
+    end
+    
     respond_to do |format|
       if @url.save
         format.html

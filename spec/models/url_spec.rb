@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Url do
-  before do
+  before :each do
     @url = Factory :url
   end
   

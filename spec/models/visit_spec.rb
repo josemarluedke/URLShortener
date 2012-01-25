@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Visit do
-  before do
+  before :each do
     @url = Factory :url
   end
   
@@ -25,7 +25,7 @@ describe Visit do
   end
   
   describe "embedded in url " do
-    before do
+    before :each do
       @visit = create
     end
     
