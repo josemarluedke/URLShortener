@@ -76,6 +76,24 @@ describe UrlsController do
       get :redirect, :token => 'notfound', :format => :json
       response.status.should eq 404
     end
+    
+    describe "visit" do
+      it "should be create new visit when get 'redirect'" do
+        get :redirect, :token => 'site'
+        Url.first.visits.count.should eq 1
+      end
+      
+      it "should have ip_address" do
+        get :redirect, :token => 'site'
+        Url.first.visits.first.ip_address.should eq "0.0.0.0"
+      end
+      
+      it "should have referral_link" do
+        request.env['HTTP_REFERER'] = 'http://twitter.com'
+        get :redirect, :token => 'site'
+        Url.first.visits.first.referral_link.should eq 'http://twitter.com'
+      end
+    end
   end
   
 end

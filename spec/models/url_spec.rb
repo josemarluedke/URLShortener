@@ -67,4 +67,16 @@ describe Url do
       url.should_not be_valid
     end
   end
+  
+  describe "new visit" do
+    it "should be create new visit" do
+      @url.new_visit
+      Url.first.visits.count.should eq 1
+    end
+    
+    it "should have correct url_id" do
+      @url.new_visit
+      Url.first.visits.first.url eq @url
+    end
+  end
 end

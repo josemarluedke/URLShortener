@@ -20,7 +20,10 @@ class Url
     else
       self.custom = true
     end
-    
+  end
+  
+  def new_visit options = {}
+    self.visits.create options
   end
   
   private

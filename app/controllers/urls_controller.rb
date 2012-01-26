@@ -39,6 +39,7 @@ class UrlsController < ApplicationController
     @url = Url.first :conditions => {:token => params['token']}
     respond_to do |format|
       if @url and not @url.link.nil?
+        @url.new_visit :ip_address => request.remote_ip, :referral_link => request.env['HTTP_REFERER']
         format.html {redirect_to @url.link}
         format.json {render :json => @url}
       else
