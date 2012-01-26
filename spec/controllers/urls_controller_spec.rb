@@ -78,14 +78,4 @@ describe UrlsController do
     end
   end
   
-  it "test" do
-    { :get => '/site+' }.should route_to({:controller => "urls", :action => "show", :token => "site+"})
-    response.should be_success
-  end
-
-  it "test 2" do
-    { :get => '/sites' }.should route_to({:controller => "urls", :action => "redirect", :token => "sites"})
-    response.should be_success
-  end
-  
 end
