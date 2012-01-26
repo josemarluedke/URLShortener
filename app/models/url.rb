@@ -20,6 +20,7 @@ class Url
     else
       self.custom = true
     end
+    
   end
   
   private

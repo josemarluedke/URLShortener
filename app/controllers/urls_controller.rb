@@ -12,6 +12,7 @@ class UrlsController < ApplicationController
 
   def create
     @url = Url.new params[:url]
+    @url.ip_address = request.remote_ip
     
     if !@url.valid? and @url.errors[:link].any?
       url = Url.first :conditions => {:link => params[:url][:link]}
@@ -25,6 +26,23 @@ class UrlsController < ApplicationController
       else
         format.html {render :action => "new"}
         format.json {render :json => @url.errors, :status => :unprocessable_entry}
+      end
+    end
+  end
+  
+  def show
+    #@url = Url.first :conditions => {:token => params['token']}
+    # peding
+  end
+  
+  def redirect
+    @url = Url.first :conditions => {:token => params['token']}
+    respond_to do |format|
+      if @url and not @url.link.nil?
+        format.html {redirect_to @url.link}
+        format.json {render :json => @url}
+      else
+        return render_404
       end
     end
   end
