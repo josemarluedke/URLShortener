@@ -79,4 +79,11 @@ describe Url do
       Url.first.visits.first.url eq @url
     end
   end
+  
+  describe "last visits" do
+    it "should returns 20 visits" do
+      21.times { |i| @url.new_visit :referral_link => i }
+      @url.last_visits.count.should eq 20
+    end
+  end
 end

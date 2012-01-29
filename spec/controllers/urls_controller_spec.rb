@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe UrlsController do
-
   describe "GET 'index'" do
     it "should returns http success" do
       get :index
@@ -50,7 +49,7 @@ describe UrlsController do
     end
   end
   
-  describe "GET 'redirect" do
+  describe "GET 'redirect'" do
     before :each do
       @url = Factory :url
     end
@@ -96,4 +95,32 @@ describe UrlsController do
     end
   end
   
+  describe "GET 'show'" do
+    before :each do
+      @url = Factory :url
+    end
+    
+    it "should returns http success" do
+      get :show, :token => 'site+'
+      response.should be_success
+      assigns(:url).should eq @url
+      response.should render_template "show"
+    end
+    
+    it "should returns success when it's json format" do
+      get :show, :token => 'site+', :format => :json
+      response.should be_success
+    end
+    
+    it "should returns error on not found url" do
+      get :show, :token => 'notfound+'
+      response.status.should eq 404
+      response.should render_template 'common/error'
+    end
+    
+    it "should returns error on not found url when it's json format" do
+      get :show, :token => 'notfound+', :format => :json
+      response.status.should eq 404
+    end
+  end
 end

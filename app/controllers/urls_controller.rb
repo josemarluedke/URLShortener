@@ -31,8 +31,15 @@ class UrlsController < ApplicationController
   end
   
   def show
-    #@url = Url.first :conditions => {:token => params['token']}
-    # peding
+    @url = Url.first :conditions => {:token => params['token'].delete("+")}
+    respond_to do |format|
+      if @url
+        format.html
+        format.json {render :json => {:url => @url, :last_visits => @url.last_visits, :total_visits => @url.visits.count}}
+      else
+        return render_404
+      end
+    end
   end
   
   def redirect

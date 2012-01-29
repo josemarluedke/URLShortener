@@ -26,6 +26,10 @@ class Url
     self.visits.create options
   end
   
+  def last_visits
+    self.visits.limit(20).order_by([:created_at, :desc])
+  end
+  
   private
     def generate_token num
       token = ShortUrlTokenGenerator::generate num
