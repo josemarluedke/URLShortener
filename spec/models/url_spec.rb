@@ -60,6 +60,11 @@ describe Url do
       @url.should be_valid
     end
     
+    it "should be valid with ftp protocol" do
+      @url.link = 'ftp://github.com/'
+      @url.should be_valid
+    end
+    
     it "should deny duplicate" do
       @url.link = 'http://josemarluedke.com'
       @url.save

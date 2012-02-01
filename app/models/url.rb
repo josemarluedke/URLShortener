@@ -9,7 +9,7 @@ class Url
   validates :link, :token, :presence => true, :uniqueness => true
   
   validate :link do
-    if self.link !~ %r{^(http|https|git|svn)://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$}
+    if self.link !~ %r{^(https?|git|svn|ftp)://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$}
       errors.add :link, 'Invalid url'
     end
   end
