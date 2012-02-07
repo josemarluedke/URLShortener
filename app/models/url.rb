@@ -32,7 +32,7 @@ class Url
   
   private
     def generate_token num
-      token = ShortUrlTokenGenerator::generate num
+      token = ShortUrlTokenGenerator.generate num
       if Url.count(conditions: {:token => token}) > 0
         token = generate_token num + 1
       end
