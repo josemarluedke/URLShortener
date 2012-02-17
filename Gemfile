@@ -32,7 +32,7 @@ gem 'slim'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-group :test do
+group :test, :development do
   gem "rspec-rails"
   gem "mongoid-rspec"
   gem 'database_cleaner'
