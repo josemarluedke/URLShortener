@@ -31,6 +31,7 @@ class UrlsController < ApplicationController
   end
   
   def show
+    return render_404 if params['token'].nil?
     @url = Url.first :conditions => {:token => params['token'].delete("+")}
     respond_to do |format|
       if @url

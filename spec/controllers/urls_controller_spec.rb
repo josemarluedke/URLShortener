@@ -122,5 +122,10 @@ describe UrlsController do
       get :show, :token => 'notfound+', :format => :json
       response.status.should eq 404
     end
+    
+    it "should returns not found page when token is not informed" do
+      get :show
+      response.status.should eq 404
+    end
   end
 end
