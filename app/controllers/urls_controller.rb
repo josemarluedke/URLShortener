@@ -1,5 +1,6 @@
 class UrlsController < ApplicationController
   def index
+    @url = Url.new
   end
 
   def new
@@ -21,7 +22,7 @@ class UrlsController < ApplicationController
     
     respond_to do |format|
       if @url.save
-        format.html
+        format.html {redirect_to "#{root_path}#{@url.token}+", notice: "You have successfully shortened the URL."}
         format.json {render :json => @url, :status => :created}
       else
         format.html {render :action => "new"}

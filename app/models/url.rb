@@ -6,15 +6,16 @@ class Url
   field :ip_address, :type => String
   field :custom, :type => Boolean, :default => false
   embeds_many :visits
-  validates :link, :token, :presence => true, :uniqueness => true
+  validates :link, :presence => true, :uniqueness => true
+  validates :token,  :uniqueness => true
   
   validate :link do
     if self.link !~ %r{^(https?|git|svn|ftp)://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$}
-      errors.add :link, 'Invalid url'
+      errors.add :link, 'invalid format'
     end
   end
   
-  before_validation do
+  before_create do
     if self.token.nil? or self.token.empty?
       self.token = generate_token Url.count(conditions: {:custom => false})
     else

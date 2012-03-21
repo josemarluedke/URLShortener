@@ -1,0 +1,13 @@
+/* line 2, ../../app/assets/stylesheets/urls.css.scss */
+.form_index input#url_link, .form_index input#url_token {
+  height: 27px;
+  margin-right: 5px;
+}
+/* line 6, ../../app/assets/stylesheets/urls.css.scss */
+.form_index input#url_link {
+  width: 645px;
+}
+/* line 9, ../../app/assets/stylesheets/urls.css.scss */
+.form_index input#url_token {
+  width: 110px;
+}

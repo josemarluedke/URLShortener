@@ -22,9 +22,8 @@ describe Url do
     end
     
     it "should be generate automatic token" do
-      @url.token = nil
-      @url.save
-      url = Url.find @url.id
+      url = Url.create! link: "http://outherlink.com"
+      url.save
       url.token.should_not be_empty
     end
   end

@@ -25,9 +25,9 @@ describe UrlsController do
   end
 
   describe "POST 'create'" do
-    it "should return http success" do
+    it "should redirect to show" do
       post :create, :url => {:link => "http://url1.com"}
-      response.should be_success
+      response.should be_redirect
     end
 
     it "should returns success when it's json format" do

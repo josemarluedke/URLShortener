@@ -1,1 +1,5 @@
-h1 Index
+.form_index
+  = simple_form_for(@url, :html => {:class => 'well form-inline' }) do |f|
+    = text_field_tag "url[link]", nil, placeholder: "Put your link here"
+    = text_field_tag "url[token]", nil, placeholder: "Custom URL"
+    = f.button :submit, value: "Shorten Link", class: "btn-large btn-primary"

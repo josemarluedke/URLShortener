@@ -1,3 +1,19 @@
-// Place all the styles related to the urls controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass/css3/box-shadow";
+
+.form_index{
+  input#url_link, input#url_token {
+    font-size: 17px;
+    height: 40px;
+    margin-right: 5px;
+  }
+  input#url_link {
+    width: 645px;
+  }
+  input#url_token {
+    width: 110px;
+  }
+  
+  input.btn {
+    height: 50px;
+  }
+}

@@ -12,5 +12,5 @@ URLShortener::Application.routes.draw do
   match '/:token' => 'urls#show', :constraints => { :token => /[a-zA-Z0-9]+[+]/ }, :via => :get
   match '/:token' => 'urls#redirect', :constraints => { :token => /[a-zA-Z0-9]+/ }, :via => :get
   
-  #root :to => 'welcome#index'
+  root :to => 'urls#index'
 end

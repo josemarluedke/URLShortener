@@ -1,9 +1,12 @@
 doctype html
 html
   head
-    title URL Shortener
+    title jdl.cc - The URL Shortener
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
   body
-    = yield
+    = render "layouts/header"
+    .container
+      = yield
+      = render "layouts/footer"

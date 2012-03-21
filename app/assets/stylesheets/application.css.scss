@@ -1,0 +1,55 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+@import "bootstrap";
+@import "compass/css3/box-shadow";
+
+body {
+  background: url("/assets/grey-bg.jpg");
+}
+header {
+  background: url("/assets/black-bg.jpg") repeat-x;
+  height: 265px;
+  margin-bottom: 30px;
+  padding-top: 35px;
+  @include box-shadow(0px -5px 10px 0px rgba(0, 0, 0, 0.4), inset 0px -5px 15px 0px rgba(0, 0, 0, 0.6));
+  
+  .logo {
+    margin: auto;
+    background: url("/assets/logo.png") no-repeat;
+    width: 500px;
+    height: 225px;
+    
+    a {
+      width: 500px;
+      height: 225px;
+      display: block;
+      span {
+        visibility: hidden;
+      }
+    }
+  }
+}
+
+footer {
+  margin-top: 30px;
+  p {
+    text-align: center;
+  }
+}
+
+form.well {
+  background: rgba(4, 4, 4, 0.2);
+  @include box-shadow(4px 4px 10px rgba(0, 0, 0, 0.3));
+}
+
+img.fork_me {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}

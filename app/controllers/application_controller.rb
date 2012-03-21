@@ -10,14 +10,11 @@ class ApplicationController < ActionController::Base
   # Renders an error response
   def render_error(arg)
     arg = {:message => arg} unless arg.is_a?(Hash)
-
     @message = arg[:message]
     @status = arg[:status] || 500
-
+    
     respond_to do |format|
-      format.html {
-        render :template => 'common/error', :layout => true, :status => @status
-      }
+      format.html { render :template => 'common/error', :layout => true, :status => @status }
       format.atom { head @status }
       format.xml { head @status }
       format.js { head @status }

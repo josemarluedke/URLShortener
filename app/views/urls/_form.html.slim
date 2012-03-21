@@ -1,0 +1,10 @@
+div
+  = simple_form_for(@url, :html => {:class => 'well form-inline' }) do |f|
+    - if @url.errors.any?
+      .alert.alert-error
+        a.close data-dismiss="alert" x
+        strong Oh snap!
+        |  Change a few things and try submitting again.
+    = f.input :link, placeholder: "Put your link here", label: false
+    = f.input :token, placeholder: "Custom URL", label: false
+    = f.button :submit, value: "Shorten Link", class: "btn-large btn-primary"
